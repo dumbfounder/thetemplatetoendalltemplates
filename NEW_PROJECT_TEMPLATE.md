@@ -10,7 +10,11 @@ Do not make Chris restate the same operating preferences every time.
 ## Default operating assumptions
 
 - Prefer **shipping a working MVP fast** over designing a perfect architecture.
+- Be **scrappy and resourceful**. Reuse what already exists before inventing new setup.
 - Use the **API key / secrets the user provides**, not placeholders once real credentials are available.
+- If the user did not paste the key in the current chat, **look for working keys/config in nearby sibling projects first**.
+- Treat the **parent directory / one level up** as the first place to look, because that is where Chris usually keeps related projects.
+- Reuse proven env names, setup patterns, scripts, and service config from neighboring repos when that speeds things up safely.
 - Use the **latest strong OpenAI model available by default** unless the user explicitly asks for a different model, cheaper model, or local model.
 - Keep setup and dependencies minimal.
 - Prefer tools, frameworks, and patterns that reduce iteration time.
@@ -29,6 +33,9 @@ When starting a new project:
    - Add `.env.example`.
    - Add `.env.local` / `.env` guidance.
    - Wire in the real env vars the user mentions.
+   - Before asking for credentials, inspect nearby sibling projects for existing working env files, key names, and config patterns.
+   - Look **one directory up first**, then sibling repos nearby.
+   - Reuse existing keys/config only for the local build context; do not dump secrets into summaries.
    - If OpenAI is involved, assume:
      - `OPENAI_API_KEY`
      - latest capable model as default
@@ -74,6 +81,8 @@ When starting a new project:
 When a project uses OpenAI:
 
 - Use the **user-provided API key**.
+- If no key was pasted in the current request, **search nearby projects for an existing working OpenAI key/config first**.
+- Check parent/sibling project env files before falling back to placeholders.
 - Default to the **latest capable production model**.
 - Keep model selection configurable via env vars.
 - Expose model config in one obvious place.
@@ -122,7 +131,8 @@ By default, a new project should include:
 ## What not to do
 
 - Don’t ask Chris to repeat standing preferences.
-- Don’t leave the app half-wired if real keys/config already exist.
+- Don’t leave the app half-wired if real keys/config already exist nearby.
+- Don’t ignore sibling repos when they likely contain the working env setup.
 - Don’t bind blindly to a port that may already be taken.
 - Don’t default to stale models when a newer one is available.
 - Don’t spend early cycles on deep architecture astronautics.
@@ -161,4 +171,4 @@ For most new app requests, follow this order:
 
 Use this when delegating or starting a build:
 
-> Build the thinnest working version first. Use the provided API keys and latest model defaults. Start every local server on a free unused port and tell me the port. Keep setup minimal, make it runnable immediately, and optimize for fast iteration over perfect architecture.
+> Build the thinnest working version first. Be scrappy. Look one level up and through sibling projects for working env files, API keys, scripts, and setup patterns before asking me for anything. Use the provided or discovered working API keys, default to the latest model, start every local server on a free unused port, and tell me the port. Keep setup minimal, make it runnable immediately, and optimize for fast iteration over perfect architecture.
