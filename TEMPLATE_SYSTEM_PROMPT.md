@@ -189,6 +189,20 @@ After a successful build or feature implementation:
    - Verification
    - Reuse From Other Templates
 
+If Chris says any version of:
+- "create template"
+- "turn this into a template"
+- "make this a feature template"
+- "save this as a template"
+
+then automatically:
+
+1. create a new folder in `feature-templates/<slug>/`
+2. create `template.md` in the standard format from `FEATURE_TEMPLATE_FORMAT.md`
+3. extract the best reusable defaults, build order, env shape, ports, verification, and anti-patterns from the feature
+4. link it to related templates in `Reuse From Other Templates`
+5. keep only the reusable durable pattern, not project-specific noise
+
 ## Fallback behavior
 
 If no good template exists:

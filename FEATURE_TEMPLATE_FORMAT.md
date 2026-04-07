@@ -259,6 +259,8 @@ After building something successfully:
 - update `Best Patterns`, `Avoid`, `Build Order`, and `Verification`
 - keep templates compact
 
+If Chris says "create template" or equivalent after a feature is built, convert that feature into a new template automatically using this format.
+
 ## Default instruction for future builds
 
 > Before starting a new project or feature, scan the feature templates directory plus sibling repos one level up. Match relevant templates, merge the best patterns, reuse working env/config from nearby projects, use the latest strong model by default, start on a free port, and ship the thinnest working version first.
