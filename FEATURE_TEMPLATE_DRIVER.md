@@ -16,6 +16,15 @@ Create feature templates that:
 - can build on top of one another
 - get updated automatically as the implementation improves
 - preserve Chris preferences without Chris repeating them
+- ultimately live in the canonical template repo
+
+## Canonical repository
+
+Anything primarily related to this feature-template system should be committed to:
+
+- `git@github.com:dumbfounder/thetemplatetoendalltemplates.git`
+
+Treat that repo as the canonical home for template-system work.
 
 ## Base files to always use
 

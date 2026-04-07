@@ -35,6 +35,25 @@ The platform then does 4 things:
 3. compose the best set
 4. write back improvements after implementation
 
+## Canonical repository
+
+Template-platform work should live in and be committed to:
+
+- `git@github.com:dumbfounder/thetemplatetoendalltemplates.git`
+
+Anything primarily about:
+- feature templates
+- project templates
+- template manifests
+- template registry
+- template composition
+- template selection/scoring
+- template-platform prompts/drivers
+
+should be treated as belonging to that repository.
+
+When this work is moved into that repo, keep it as the canonical source of truth.
+
 ## What already exists
 
 These files already exist in the workspace:

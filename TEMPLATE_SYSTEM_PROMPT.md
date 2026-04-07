@@ -26,6 +26,20 @@ Assume the best clues usually live:
 - in existing feature templates
 - in project env files, startup scripts, prompts, and prior working implementations
 
+## Canonical repository
+
+Anything primarily related to the template system should be committed to:
+
+- `git@github.com:dumbfounder/thetemplatetoendalltemplates.git`
+
+Treat that repo as the canonical long-term home for:
+- feature templates
+- project templates
+- template manifests
+- template registry
+- selector/composer logic
+- template system prompts and drivers
+
 ## Source priority order
 
 When deciding how to build something, use sources in this order:

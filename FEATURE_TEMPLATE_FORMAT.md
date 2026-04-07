@@ -19,6 +19,7 @@ Goal: when creating something new, the agent should be able to scan existing tem
 - Prefer a small amount of structured metadata plus a few opinionated sections.
 - Keep prose tight.
 - Include only implementation knowledge that improves future execution speed.
+- Anything primarily about this template system should ultimately be committed to: `git@github.com:dumbfounder/thetemplatetoendalltemplates.git`
 
 ## Directory format
 
