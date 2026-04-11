@@ -1,8 +1,63 @@
 # FEATURE_TEMPLATE_FORMAT.md
 
-Use this as the **standard format** for reusable project and feature templates.
+Use this as the **standard format and instruction file** for reusable project and feature templates.
 
 Goal: when creating something new, the agent should be able to scan existing templates, compare them, pick the best pieces, and assemble a fast MVP without Chris re-explaining the same preferences.
+
+## Short-prompt mode
+
+This file is intentionally written so the user can prompt with something as short as:
+
+> Use `/Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md` to make a template for **[TASK]**.
+
+If you are given a prompt like that, treat this file as the full instruction set.
+Do not ask for a longer prompt unless the task itself is ambiguous.
+
+## Single-file strategy
+
+Templates should be **single markdown files** so they are easy to:
+- share
+- drop into chats
+- copy between repos
+- version cleanly
+- scan without opening a folder tree
+
+Default location and naming:
+
+```text
+/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/
+  <template-slug>.md
+```
+
+Examples:
+- `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/mobile-design-best-practices.md`
+- `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/openai-realtime-voice-web.md`
+- `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/auth-google-oauth.md`
+
+If supporting research, examples, or migration notes matter, **embed them in the same file** under an appendix-style section instead of creating sidecar files by default.
+Only split into multiple files if Chris explicitly asks for it.
+
+## What to do when using this file
+
+When asked to create a template with this file:
+
+1. Infer the likely user, use case, and scope for the requested template.
+2. Decide what information should be captured for future reuse.
+3. Keep the template highly scannable.
+4. Balance simplicity with completeness.
+5. Output a reusable template that follows the exact section order in this file.
+6. Keep fluff out. Favor durable implementation guidance.
+7. Prefer a single self-contained markdown file.
+
+## Output contract
+
+Unless the user asks for something else, return:
+
+1. **Template Name**
+2. **Best Use Description**
+3. **The Template Itself**
+4. **Short Fill-In Guide**
+5. **Optional Variants** only if they materially improve reuse
 
 ## Design goals
 
@@ -11,26 +66,17 @@ Goal: when creating something new, the agent should be able to scan existing tem
 - Support **best-of-breed composition** across multiple prior features.
 - Keep the format short, structured, and consistent.
 - Optimize for **fast iteration**, not documentation theater.
+- Keep each template easy to share as one file.
 
 ## Rules
 
-- One feature template = one folder.
-- Each feature template must contain a `template.md` file at minimum.
+- One feature template = one markdown file by default.
+- Prefer `feature-templates/<template-slug>.md`.
 - Prefer a small amount of structured metadata plus a few opinionated sections.
 - Keep prose tight.
 - Include only implementation knowledge that improves future execution speed.
+- Put supporting notes in the same file unless there is a strong reason not to.
 - Anything primarily about this template system should ultimately be committed to: `git@github.com:dumbfounder/thetemplatetoendalltemplates.git`
-
-## Directory format
-
-```text
-feature-templates/
-  <template-slug>/
-    template.md
-    assets/             # optional starter code / boilerplate / UI pieces
-    references/         # optional detailed notes, API quirks, examples
-    prompts/            # optional reusable agent prompts
-```
 
 ## Naming
 
@@ -44,9 +90,9 @@ Examples:
 - `admin-dashboard`
 - `rag-document-ingestion`
 
-## Required file: template.md
+## Required file shape
 
-Every template must follow this exact section order.
+Every template should follow this exact section order.
 
 ```markdown
 # <Template Name>
@@ -122,6 +168,9 @@ KEY=value
 ## Notes
 - <sharp edge>
 - <sharp edge>
+
+## Appendix (Optional)
+- <embedded research notes, source links, examples, migrations, or deeper rationale>
 ```
 ```
 
@@ -209,6 +258,13 @@ This is the key section for best-of-breed composition.
 
 When writing a template, explicitly say which other templates are worth borrowing from and why.
 
+### Notes
+Keep the sharp edges and strongest durable guidance here.
+
+### Appendix (Optional)
+Use this for embedded source links, research notes, examples, migration notes, or implementation rationale when that extra depth materially improves reuse.
+Default to embedding here instead of creating separate files.
+
 ## Best-of-breed merge algorithm
 
 When creating a new project or feature:
@@ -232,6 +288,7 @@ When multiple templates overlap, prefer the one with:
 5. reusable defaults
 6. fewer unnecessary dependencies
 7. evidence it handled a real project successfully
+8. easy single-file portability
 
 ## Project template vs feature template
 
@@ -259,9 +316,10 @@ After building something successfully:
 - extract only the durable reusable pattern
 - update `Best Patterns`, `Avoid`, `Build Order`, and `Verification`
 - keep templates compact
+- prefer updating one shareable markdown file instead of creating sidecar notes
 
 If Chris says "create template" or equivalent after a feature is built, convert that feature into a new template automatically using this format.
 
 ## Default instruction for future builds
 
-> Before starting a new project or feature, scan the feature templates directory plus sibling repos one level up. Match relevant templates, merge the best patterns, reuse working env/config from nearby projects, use the latest strong model by default, start on a free port, and ship the thinnest working version first.
+> Before starting a new project or feature, scan the feature templates directory plus sibling repos one level up. Match relevant templates, merge the best patterns, reuse working env/config from nearby projects, use the latest strong model by default, start on a free port, and ship the thinnest working version first. Keep each template as a single self-contained markdown file unless Chris asks otherwise.

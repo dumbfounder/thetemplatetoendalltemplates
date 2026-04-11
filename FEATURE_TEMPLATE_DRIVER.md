@@ -16,6 +16,7 @@ Create feature templates that:
 - can build on top of one another
 - get updated automatically as the implementation improves
 - preserve Chris preferences without Chris repeating them
+- are easy to share as single files
 - ultimately live in the canonical template repo
 
 ## Canonical repository
@@ -30,13 +31,13 @@ Treat that repo as the canonical home for template-system work.
 
 Read and follow these first:
 
-1. `FEATURE_TEMPLATE_DRIVER.md`
-2. `FEATURE_TEMPLATE_FORMAT.md`
-3. `NEW_PROJECT_TEMPLATE.md`
-4. `TEMPLATE_SYSTEM_PROMPT.md`
+1. `/Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_DRIVER.md`
+2. `/Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md`
+3. `/Users/dumbfounder/Dropbox/codex apps/templates/NEW_PROJECT_TEMPLATE.md`
+4. `/Users/dumbfounder/Dropbox/codex apps/templates/TEMPLATE_SYSTEM_PROMPT.md`
 
 Then scan:
-- `feature-templates/`
+- `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/`
 - sibling repos one level up
 - the current project implementation
 
@@ -59,18 +60,16 @@ Treat it as:
 - Always use a free unused port.
 - Build the thinnest working slice first.
 - Keep the template compact and reusable.
+- Prefer one self-contained markdown file per template.
 
 ## Template creation rule
 
 When Chris says a feature is being turned into a template:
 
-1. create or update `feature-templates/<slug>/template.md`
-2. use the exact required format from `FEATURE_TEMPLATE_FORMAT.md`
-3. optionally add:
-   - `references/`
-   - `assets/`
-   - `prompts/`
-   if they improve reuse materially
+1. create or update `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/<slug>.md`
+2. use the exact required format from `/Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md`
+3. embed research notes, examples, and rationale in `## Appendix (Optional)` by default
+4. split into multiple files only if Chris explicitly asks
 
 ## Template iteration rule
 
@@ -92,6 +91,7 @@ Always review and refresh these sections when the feature improves:
 - `Variants`
 - `Reuse From Other Templates`
 - `Notes`
+- `Appendix (Optional)` if the embedded research or examples changed
 
 Do not wait for Chris to separately ask for the template update if the work clearly improved the reusable pattern.
 
@@ -101,7 +101,7 @@ Every feature template must be able to reference and build on every other releva
 
 That means every time you create or update a template, you must:
 
-1. scan `feature-templates/`
+1. scan `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/`
 2. identify related templates
 3. explicitly note useful dependencies in `Reuse From Other Templates`
 4. borrow proven patterns from related templates when they improve the current one
@@ -151,13 +151,14 @@ A good feature template should make future builds faster by clearly encoding:
 - how to verify quickly
 - what to avoid
 - what other templates it builds on
+- all of that in one file that is easy to paste or share
 
 ## Discovery order
 
 When starting template work, scan in this order:
 
 1. existing template for this feature
-2. related templates in `feature-templates/`
+2. related templates in `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/`
 3. sibling repos one level up
 4. current repo implementation
 5. ask Chris only if still blocked
@@ -173,4 +174,4 @@ When finishing a template-creation or template-iteration task, report briefly:
 
 ## One-line instruction
 
-> We are creating a feature template. Use this file, scan all existing feature templates plus sibling repos, build with best-of-breed patterns, and automatically update the template as the feature evolves.
+> We are creating a feature template. Use this file, scan all existing feature templates plus sibling repos, build with best-of-breed patterns, and automatically update the template as the feature evolves. Keep the final template as a single self-contained markdown file unless Chris asks otherwise.

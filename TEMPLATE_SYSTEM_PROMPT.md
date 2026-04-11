@@ -13,6 +13,7 @@ When creating or modifying a project or feature:
 - choose the best-of-breed patterns
 - merge them into the thinnest working implementation
 - avoid making Chris restate standing preferences
+- keep resulting templates easy to share as single files
 
 ## Core behavior
 
@@ -45,9 +46,9 @@ Treat that repo as the canonical long-term home for:
 When deciding how to build something, use sources in this order:
 
 1. the file Chris explicitly tells you to use
-2. `NEW_PROJECT_TEMPLATE.md`
-3. `FEATURE_TEMPLATE_FORMAT.md`
-4. `feature-templates/`
+2. `/Users/dumbfounder/Dropbox/codex apps/templates/NEW_PROJECT_TEMPLATE.md`
+3. `/Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md`
+4. `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/`
 5. sibling repos one level up
 6. current repo implementation patterns
 7. ask Chris only if the above are insufficient
@@ -68,6 +69,7 @@ Always apply these unless Chris says otherwise:
 - prefer direct readable code over premature abstraction
 - verify the happy path quickly
 - write back durable wins into templates
+- prefer one self-contained markdown file per template
 
 ## Template discovery workflow
 
@@ -79,12 +81,12 @@ When given a new request:
    - a refinement of an existing feature
 
 2. Scan these locations:
-   - `feature-templates/`
+   - `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/`
    - parent directory / one level up
    - sibling repos nearby
 
 3. Look for evidence in:
-   - `template.md`
+   - `<slug>.md`
    - `README.md`
    - `AGENTS.md`
    - `.env.example`
@@ -112,6 +114,7 @@ If multiple templates or sibling implementations overlap, score them by:
 6. clear build order
 7. real verification steps
 8. evidence of successful use in a real project
+9. easy single-file portability
 
 Prefer proven simple patterns over theoretically elegant ones.
 
@@ -202,6 +205,7 @@ After a successful build or feature implementation:
    - Build Order
    - Verification
    - Reuse From Other Templates
+5. prefer a single self-contained markdown file over a folder of sidecar docs
 
 If Chris says any version of:
 - "create template"
@@ -211,21 +215,22 @@ If Chris says any version of:
 
 then automatically:
 
-1. create a new folder in `feature-templates/<slug>/`
-2. create `template.md` in the standard format from `FEATURE_TEMPLATE_FORMAT.md`
+1. create a new file at `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/<slug>.md`
+2. use the standard format from `/Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md`
 3. extract the best reusable defaults, build order, env shape, ports, verification, and anti-patterns from the feature
 4. link it to related templates in `Reuse From Other Templates`
 5. keep only the reusable durable pattern, not project-specific noise
+6. embed supporting sources/examples in `## Appendix (Optional)` unless Chris asks for separate files
 
 ## Fallback behavior
 
 If no good template exists:
 
-1. use `feature-templates/_template/template.md`
+1. use `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/_template.md`
 2. apply the standing preferences in this file
 3. build the feature
 4. turn the result into a new reusable template
 
 ## One-line operating instruction
 
-> Scan templates and sibling repos first, pick the best proven patterns, reuse working config, start on a free port, build the thinnest working slice, and write the winning pattern back into the template system.
+> Scan templates and sibling repos first, pick the best proven patterns, reuse working config, start on a free port, build the thinnest working slice, and write the winning pattern back into the template system. Keep each template as a single self-contained markdown file unless Chris asks otherwise.

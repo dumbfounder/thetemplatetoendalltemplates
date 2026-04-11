@@ -58,19 +58,39 @@ When this work is moved into that repo, keep it as the canonical source of truth
 
 These files already exist in the workspace:
 
-- `/Users/dumbfounder/.openclaw/workspace/NEW_PROJECT_TEMPLATE.md`
-- `/Users/dumbfounder/.openclaw/workspace/FEATURE_TEMPLATE_FORMAT.md`
-- `/Users/dumbfounder/.openclaw/workspace/TEMPLATE_SYSTEM_PROMPT.md`
-- `/Users/dumbfounder/.openclaw/workspace/FEATURE_TEMPLATE_DRIVER.md`
-- `/Users/dumbfounder/.openclaw/workspace/feature-templates/_template/template.md`
+- `/Users/dumbfounder/Dropbox/codex apps/templates/NEW_PROJECT_TEMPLATE.md`
+- `/Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md`
+- `/Users/dumbfounder/Dropbox/codex apps/templates/TEMPLATE_SYSTEM_PROMPT.md`
+- `/Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_DRIVER.md`
+- `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/_template.md`
 
 These form the documentation/instruction layer.
+
+## Single-file template strategy
+
+The default template unit should be one markdown file per template.
+
+Preferred shape:
+
+```text
+/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/
+  <slug>.md
+```
+
+Why:
+- easier sharing
+- easier copy/paste into chats and prompts
+- lower friction for reuse
+- simpler versioning
+- fewer sidecar files to drift out of sync
+
+If deeper research or examples are needed, embed them in an appendix section inside the same file by default.
 
 ## What is needed to make it a platform
 
 ### 1. Standard template format
 
-Keep the human-readable `template.md` format.
+Keep the human-readable markdown format.
 
 This is the durable reusable explanation layer.
 
@@ -92,10 +112,11 @@ Current required sections are:
 - Variants
 - Reuse From Other Templates
 - Notes
+- Appendix (Optional)
 
 ### 2. Machine-readable manifest per template
 
-Add a `template.json` next to each `template.md`.
+Add a `template.json` next to each markdown template if and when the platform layer truly needs it.
 
 Purpose:
 - make templates queryable
@@ -108,6 +129,7 @@ Example shape:
 {
   "name": "google-oauth-auth",
   "type": "feature",
+  "file": "feature-templates/google-oauth-auth.md",
   "useWhen": ["google login", "auth", "user accounts"],
   "stack": ["nextjs", "react", "node"],
   "dependsOn": [],
@@ -130,16 +152,16 @@ Add a central registry to index all templates.
 
 Suggested path:
 
-`/Users/dumbfounder/.openclaw/workspace/templates/registry/index.json`
+`/Users/dumbfounder/Dropbox/codex apps/templates/templates/registry/index.json`
 
 Example:
 
 ```json
 {
   "templates": [
-    "features/google-oauth-auth/template.json",
-    "features/chat-ui/template.json",
-    "features/admin-dashboard/template.json"
+    "feature-templates/google-oauth-auth.md",
+    "feature-templates/chat-ui.md",
+    "feature-templates/admin-dashboard.md"
   ]
 }
 ```
@@ -173,10 +195,10 @@ After a feature works well, saying things like:
 
 should trigger:
 
-- creation or update of `template.md`
-- creation or update of `template.json`
+- creation or update of `<slug>.md`
+- creation or update of `template.json` if manifests are in play
 - linking to dependencies and related templates
-- capture of reusable defaults, verification, and anti-patterns
+- capture of reusable defaults, verification, anti-patterns, and embedded research appendix
 
 ## Platform loop
 
@@ -232,6 +254,7 @@ Each template should be scored on:
 - modern defaults
 - compatibility with chosen stack
 - composability with other templates
+- single-file portability
 
 Suggested weighted formula:
 
@@ -248,7 +271,7 @@ Need these 3 layers:
 
 ### Layer 1: Template library
 
-Current `feature-templates/` plus future project templates.
+Current `/Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/` plus future project templates.
 
 ### Layer 2: Composition engine
 
@@ -268,16 +291,11 @@ templates/
   FEATURE_TEMPLATE_FORMAT.md
   registry/
     index.json
-  features/
-    google-oauth-auth/
-      template.md
-      template.json
-    chat-ui/
-      template.md
-      template.json
-    admin-dashboard/
-      template.md
-      template.json
+  feature-templates/
+    _template.md
+    google-oauth-auth.md
+    chat-ui.md
+    admin-dashboard.md
 ```
 
 ## Future build prompt shape
@@ -287,7 +305,7 @@ Suggested prompt once the platform exists:
 ```text
 Use ./templates/FEATURE_TEMPLATE_DRIVER.md.
 
-Read the registry and all relevant feature manifests/templates.
+Read the registry and all relevant templates.
 Choose the best-of-breed combination for this application.
 Prefer the fastest verified compatible patterns.
 Compose the selected templates into one implementation plan.
@@ -313,8 +331,8 @@ To become a real platform, the next concrete additions should be:
 ## Best next actions
 
 1. define the `template.json` schema
-2. create `templates/registry/index.json`
-3. add 5-10 real feature templates with manifests
+2. create `/Users/dumbfounder/Dropbox/codex apps/templates/templates/registry/index.json`
+3. add 5-10 real feature templates with manifests or consistent markdown metadata
 4. create the selector/composer prompt
 5. test composition on a real app request
 
