@@ -2,13 +2,7 @@
 
 This repo is the template library and instruction set for template-driven project and feature work.
 
-The current local working-copy path is:
-
-```text
-/Users/dumbfounder/Dropbox/codex apps/templates
-```
-
-If you are using this repo from another checkout, replace that root path in the prompts below with your own absolute repo path.
+Clone it anywhere. When a prompt below says "use absolute paths", replace `<ABSOLUTE_REPO_PATH>` with the absolute path to your local checkout of this repo.
 
 ## What Is Here
 
@@ -52,12 +46,12 @@ Use this prompt as-is:
 ```text
 Use these files as the controlling instructions for this new project:
 
-- /Users/dumbfounder/Dropbox/codex apps/templates/TEMPLATE_SYSTEM_PROMPT.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/NEW_PROJECT_TEMPLATE.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md
+- <ABSOLUTE_REPO_PATH>/TEMPLATE_SYSTEM_PROMPT.md
+- <ABSOLUTE_REPO_PATH>/NEW_PROJECT_TEMPLATE.md
+- <ABSOLUTE_REPO_PATH>/FEATURE_TEMPLATE_FORMAT.md
 
 Also scan:
-- /Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/
+- <ABSOLUTE_REPO_PATH>/feature-templates/
 
 Task:
 Build this project using the template system. Scan existing templates and sibling repos, choose the best-of-breed patterns, build the thinnest working end-to-end slice first, keep model selection env-driven, reuse working nearby config before asking, and always run local servers on a free unused port.
@@ -71,11 +65,11 @@ Use this prompt shape:
 Apply this feature template to the current project as a one-off implementation pass:
 
 Template:
-- /Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/<template-file>.md
+- <ABSOLUTE_REPO_PATH>/feature-templates/<template-file>.md
 
 Also use these base files:
-- /Users/dumbfounder/Dropbox/codex apps/templates/TEMPLATE_SYSTEM_PROMPT.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/NEW_PROJECT_TEMPLATE.md
+- <ABSOLUTE_REPO_PATH>/TEMPLATE_SYSTEM_PROMPT.md
+- <ABSOLUTE_REPO_PATH>/NEW_PROJECT_TEMPLATE.md
 
 Task:
 Audit the current project against the template, identify the highest-leverage gaps, implement the thinnest high-impact changes first, and verify the main happy path. Do not create or update a reusable template unless I explicitly ask.
@@ -87,11 +81,11 @@ Example for mobile design:
 Apply this feature template to the current project as a one-off implementation pass:
 
 Template:
-- /Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/mobile-design-best-practices.md
+- <ABSOLUTE_REPO_PATH>/feature-templates/mobile-design-best-practices.md
 
 Also use these base files:
-- /Users/dumbfounder/Dropbox/codex apps/templates/TEMPLATE_SYSTEM_PROMPT.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/NEW_PROJECT_TEMPLATE.md
+- <ABSOLUTE_REPO_PATH>/TEMPLATE_SYSTEM_PROMPT.md
+- <ABSOLUTE_REPO_PATH>/NEW_PROJECT_TEMPLATE.md
 
 Task:
 Audit the current app against the mobile design template, identify the top mobile UX issues, implement the highest-leverage fixes first, and verify the main mobile flows. Do not create or update any reusable template unless I explicitly ask.
@@ -108,21 +102,21 @@ Source project:
 - /ABSOLUTE/PATH/TO/THE/OTHER/PROJECT
 
 Template system files to use:
-- /Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_DRIVER.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/TEMPLATE_SYSTEM_PROMPT.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/NEW_PROJECT_TEMPLATE.md
+- <ABSOLUTE_REPO_PATH>/FEATURE_TEMPLATE_DRIVER.md
+- <ABSOLUTE_REPO_PATH>/FEATURE_TEMPLATE_FORMAT.md
+- <ABSOLUTE_REPO_PATH>/TEMPLATE_SYSTEM_PROMPT.md
+- <ABSOLUTE_REPO_PATH>/NEW_PROJECT_TEMPLATE.md
 
 Template library destination:
-- /Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/
+- <ABSOLUTE_REPO_PATH>/feature-templates/
 
 Task:
-Scan the source project, identify a reusable feature worth extracting, and turn it into a new single-file feature template in /Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/<slug>.md.
+Scan the source project, identify a reusable feature worth extracting, and turn it into a new single-file feature template in <ABSOLUTE_REPO_PATH>/feature-templates/<slug>.md.
 
 Instructions:
-- treat /Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_DRIVER.md as the controlling workflow
-- follow the exact section order required by /Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md
-- scan existing templates in /Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/ and reference related ones in "Reuse From Other Templates"
+- treat <ABSOLUTE_REPO_PATH>/FEATURE_TEMPLATE_DRIVER.md as the controlling workflow
+- follow the exact section order required by <ABSOLUTE_REPO_PATH>/FEATURE_TEMPLATE_FORMAT.md
+- scan existing templates in <ABSOLUTE_REPO_PATH>/feature-templates/ and reference related ones in "Reuse From Other Templates"
 - inspect the source project for the real implementation, env patterns, startup commands, ports, file structure, verification steps, and anti-patterns
 - extract only durable reusable knowledge, not project-specific noise
 - keep the result as one self-contained markdown file
@@ -135,13 +129,13 @@ Use this prompt:
 ```text
 We are creating a feature template. Use these files:
 
-- /Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_DRIVER.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/NEW_PROJECT_TEMPLATE.md
-- /Users/dumbfounder/Dropbox/codex apps/templates/TEMPLATE_SYSTEM_PROMPT.md
+- <ABSOLUTE_REPO_PATH>/FEATURE_TEMPLATE_DRIVER.md
+- <ABSOLUTE_REPO_PATH>/FEATURE_TEMPLATE_FORMAT.md
+- <ABSOLUTE_REPO_PATH>/NEW_PROJECT_TEMPLATE.md
+- <ABSOLUTE_REPO_PATH>/TEMPLATE_SYSTEM_PROMPT.md
 
 Scan:
-- /Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/
+- <ABSOLUTE_REPO_PATH>/feature-templates/
 - sibling repos one level up
 - the current implementation
 
@@ -154,7 +148,7 @@ Improve the matching feature implementation and update its template in the same 
 If you already know the feature and just want the skeleton:
 
 ```text
-Use /Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/_template.md as the base and create a new feature template at /Users/dumbfounder/Dropbox/codex apps/templates/feature-templates/<slug>.md. Follow /Users/dumbfounder/Dropbox/codex apps/templates/FEATURE_TEMPLATE_FORMAT.md exactly and fill it with durable reusable implementation guidance only.
+Use <ABSOLUTE_REPO_PATH>/feature-templates/_template.md as the base and create a new feature template at <ABSOLUTE_REPO_PATH>/feature-templates/<slug>.md. Follow <ABSOLUTE_REPO_PATH>/FEATURE_TEMPLATE_FORMAT.md exactly and fill it with durable reusable implementation guidance only.
 ```
 
 ## Which File To Use
